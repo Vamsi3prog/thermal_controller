@@ -13,6 +13,8 @@ for i in range(10) :
     print("Moderate")
   else :
     print("Critical")
+    with open("log.txt", "a") as log_file :
+        log_file.write(time.time(), "Critical Temperature : ", temp)
     count += 1
 
   time.sleep(2)
