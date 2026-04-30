@@ -15,6 +15,6 @@ for i in range(10) :
     print("Critical")
     count += 1
 
-    time.sleep(2)
+  time.sleep(2)
 
 print("No.of critical incidents : ", count)
