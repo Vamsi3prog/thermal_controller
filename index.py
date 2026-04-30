@@ -1,22 +1,23 @@
 import random
 import time
 
+start = time.ctime()
 count = 0
 
-for i in range(10) : 
+for i in range(5) : 
     
-  temp = random.uniform(0, 100)
+  temp = random.randint(0, 100)
   
   if temp <= 32 :
-    print("Normal")
+    print(f"{time.ctime()} : {temp} C -- Normal")
   elif temp <= 60 :
-    print("Moderate")
+    print(f"{time.ctime()} : {temp} C -- Moderate")
   else :
-    print("Critical")
+    print(f"{time.ctime()} : {temp} C -- Critical")
     with open("log.txt", "a") as log_file :
-        log_file.write(time.time(), "Critical Temperature : ", temp)
+        log_file.write(f"{time.strftime("%Y-%m-%d %H:%M:%S")} Critical Temperature : {temp}")
     count += 1
 
   time.sleep(2)
 
-print("No.of critical incidents : ", count)
+print(f"No.of critical incidents from {start} to {time.ctime()} : {count}")
