@@ -1,4 +1,6 @@
-temp = int(input())
+import random
+
+temp = random.uniform(100)
 
 if temp <= 32 :
   print("Normal")
