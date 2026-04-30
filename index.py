@@ -15,7 +15,7 @@ for i in range(5) :
   else :
     print(f"{time.ctime()} : {temp} C -- Critical")
     with open("log.txt", "a") as log_file :
-        log_file.write(f"{time.strftime("%Y-%m-%d %H:%M:%S")} Critical Temperature : {temp}")
+        log_file.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Critical Temperature: {temp}\n")
     count += 1
 
   time.sleep(2)
