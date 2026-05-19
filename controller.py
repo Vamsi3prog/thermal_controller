@@ -21,10 +21,8 @@ class TemperatureSensor:
                 
             return random.randint(0, 100)
         except Exception as error :
-            print(f"{[self.sensor_id]} Sensor Error : {error}")
+            print(f"[{self.sensor_id}] Sensor Error : {error}")
             return None
-        finally :
-            pass
 
     def log_writer(self, temperature):
         try :
@@ -35,8 +33,6 @@ class TemperatureSensor:
             self.count += 1
         except OSError as error :
             print(f"Writing error : {error}")
-        finally :
-            pass
 
     def log_error(self, message) :
         try :
