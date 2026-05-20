@@ -4,14 +4,17 @@ import time
 class TemperatureSensor:
 
     def __init__(self, sensor_id, normal, moderate):
+        if normal >= moderate:
+            raise ValueError("normal must be less than moderate")
+        
         self.sensor_id = sensor_id
         self.count = 0
-        self.NORMAL = normal
-        self.MODERATE = moderate
+        self.normal = normal
+        self.moderate = moderate
 
     def monitor(self):
         temperature = self.get_temperature()
-        self.classifier(temperature)
+        self.temperature_classifier(temperature)
         time.sleep(2)
 
     def get_temperature(self):
@@ -43,15 +46,15 @@ class TemperatureSensor:
         except OSError as error :
             print(f"Writing error : {error}")
 
-    def classifier(self, temperature):
+    def temperature_classifier(self, temperature):
         
         if temperature is None:
-            self.log_error("Sensor read failed")
+            self.log_error("Read cycle failed")
             return
         
-        if temperature <= self.NORMAL:
+        if temperature <= self.normal:
             print(f"[{self.sensor_id}] {time.ctime()} : {temperature} C -- Normal")
-        elif temperature <= self.MODERATE:
+        elif temperature <= self.moderate:
             print(f"[{self.sensor_id}] {time.ctime()} : {temperature} C -- Moderate")
         else:
             print(f"[{self.sensor_id}] {time.ctime()} : {temperature} C -- Critical")
