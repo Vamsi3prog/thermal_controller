@@ -13,4 +13,4 @@ for sensor in sensors :
     print("System ID : ", sensor.sensor_id)
     for _ in range(random.randint(5, 11)) :
         sensor.monitor()
-    print(f"No. of critical incidents from {start} to {time.ctime()} : {sensor.count}")
+    print(f"No. of critical incidents from {start} to {time.ctime()} : {sensor.critical_count}")
