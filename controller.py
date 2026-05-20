@@ -19,7 +19,7 @@ class TemperatureSensor:
     def get_temperature(self):
         try :
             if random.randint(1, 10) == 1:
-                raise Exception("Sensor Read Error")
+                raise RuntimeError("Sensor Read Error")
                 
             return random.randint(0, 100)
         except RuntimeError as error :
@@ -34,6 +34,8 @@ class TemperatureSensor:
                 )
         except OSError as error :
             print(f"Writing error : {error}")
+        finally :
+            print("Data logged successfully")
 
     def temperature_classifier(self, temperature):
         if temperature is None:
