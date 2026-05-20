@@ -22,7 +22,7 @@ class TemperatureSensor:
                 raise Exception("Sensor Read Error")
                 
             return random.randint(0, 100)
-        except Exception as error :
+        except RuntimeError as error :
             print(f"[{self.sensor_id}] Sensor Error : {error}")
             return None
 
